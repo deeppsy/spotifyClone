@@ -19,7 +19,22 @@ declare global {
 export type RootStackParamList = {
   Root: NavigatorScreenParams<RootTabParamList> | undefined;
   Modal: undefined;
+  Camera: undefined;
+  Flash: undefined;
+  Setting: undefined;
   NotFound: undefined;
+};
+
+export type TabOneParamList = {
+  TabOneScreen: undefined;
+  AlbumScreen: undefined;
+  CameraScreen: undefined;
+  FlashScreen: undefined;
+  SettingScreen: undefined;
+};
+
+export type TabTwoParamList = {
+  TabTwoScreen: undefined;
 };
 
 export type RootStackScreenProps<Screen extends keyof RootStackParamList> =
@@ -29,6 +44,9 @@ export type RootTabParamList = {
   Home: undefined;
   Search: undefined;
   Library: undefined;
+  CameraScreen: undefined;
+  FlashScreen: undefined;
+  SettingScreen: undefined;
 };
 
 export type RootTabScreenProps<Screen extends keyof RootTabParamList> =
@@ -44,4 +62,11 @@ export type Album = {
   numberOfLikes: number;
   imageUri: string;
   artistsHeadline: string;
+};
+
+export type Song = {
+  id: string;
+  imageUri: string;
+  title: string;
+  artist: string;
 };

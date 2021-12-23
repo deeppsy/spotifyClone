@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "spotifyclone",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "C:\\Users\\DELL\\Desktop\\Projects\\Spotify RN\\spotifyClone\\amplify\\backend\\api\\spotifyclone\\schema.graphql",
+    "defaultAuthType": {
+      "mode": "API_KEY",
+      "expirationTime": 7
+    }
+  }
+}

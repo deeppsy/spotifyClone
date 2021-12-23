@@ -29,11 +29,17 @@ import NotFoundScreen from "../screens/NotFoundScreen";
 import Home from "../screens/Home";
 import Search from "../screens/Search";
 import Library from "../screens/Library";
+import AlbumScreen from "../screens/AlbumScreen";
+import SettingScreen from "../screens/SettingScreen";
+import FlashScreen from "../screens/FlashScreen";
+import CameraScreen from "../screens/CameraScreen";
 
 import {
   RootStackParamList,
   RootTabParamList,
   RootTabScreenProps,
+  TabOneParamList,
+  TabTwoParamList,
 } from "../types";
 import LinkingConfiguration from "./LinkingConfiguration";
 
@@ -96,7 +102,7 @@ function BottomTabNavigator() {
     >
       <BottomTab.Screen
         name="Home"
-        component={Home}
+        component={TabOneNavigator}
         options={({ navigation }: RootTabScreenProps<"Home">) => ({
           title: "Home",
           tabBarIcon: ({ color }) => (
@@ -126,7 +132,7 @@ function BottomTabNavigator() {
               </Pressable>
 
               <Pressable
-                onPress={() => navigation.navigate("Modal")}
+                onPress={() => navigation.navigate("FlashScreen")}
                 style={({ pressed }) => ({
                   opacity: pressed ? 0.5 : 1,
                 })}
@@ -140,7 +146,7 @@ function BottomTabNavigator() {
               </Pressable>
 
               <Pressable
-                onPress={() => navigation.navigate("Modal")}
+                onPress={() => navigation.navigate("SettingScreen")}
                 style={({ pressed }) => ({
                   opacity: pressed ? 0.5 : 1,
                 })}
@@ -158,7 +164,7 @@ function BottomTabNavigator() {
       />
       <BottomTab.Screen
         name="Search"
-        component={Search}
+        component={TabTwoNavigator}
         options={{
           title: "Search",
           tabBarIcon: ({ color }) => (
@@ -181,12 +187,53 @@ function BottomTabNavigator() {
   );
 }
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>["name"];
-  color: string;
-}) {
-  return <FontAwesome size={30} style={{ marginBottom: -3 }} {...props} />;
+const TabOneStack = createNativeStackNavigator<TabOneParamList>();
+
+function TabOneNavigator() {
+  return (
+    <TabOneStack.Navigator>
+      <TabOneStack.Screen
+        name="TabOneScreen"
+        component={Home}
+        options={{ headerShown: false }}
+      />
+
+      <TabOneStack.Screen
+        name="AlbumScreen"
+        component={AlbumScreen}
+        options={{ headerShown: false }}
+      />
+
+      <TabOneStack.Screen
+        name="CameraScreen"
+        component={CameraScreen}
+        options={{ headerShown: false }}
+      />
+
+      <TabOneStack.Screen
+        name="FlashScreen"
+        component={FlashScreen}
+        options={{ headerShown: false }}
+      />
+      <TabOneStack.Screen
+        name="SettingScreen"
+        component={SettingScreen}
+        options={{ headerShown: false }}
+      />
+    </TabOneStack.Navigator>
+  );
+}
+
+const TabTwoStack = createNativeStackNavigator<TabTwoParamList>();
+
+function TabTwoNavigator() {
+  return (
+    <TabTwoStack.Navigator>
+      <TabTwoStack.Screen
+        name="TabTwoScreen"
+        component={Search}
+        options={{ headerShown: false }}
+      />
+    </TabTwoStack.Navigator>
+  );
 }
